@@ -1,0 +1,5 @@
+Zend_Service_Amazon_Sqs:
+
+More info at: http://framework.zend.com/wiki/display/ZFPROP/Zend_Service_Amazon_Sqs+-+Jon+Whitcraft
+
+** NOTE ** this repo contains the Zend_Crypt module that is in the standard incubator currently.
