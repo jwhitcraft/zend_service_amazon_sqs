@@ -4,28 +4,8 @@ require_once 'Zend/Service/Abstract.php';
 
 require_once 'Zend/Service/Amazon/Sqs/Response.php';
 
-abstract class Zend_Service_Amazon_Sqs extends Zend_Service_Abstract
+abstract class Zend_Service_Amazon_Sqs extends Zend_Service_Amazon_Abstract
 {
-    /**
-     * @var string Amazon Access Key
-     */
-    protected static $default_accessKey = null;
-
-    /**
-     * @var string Amazon Secret Key
-     */
-    protected static $default_secretKey = null;
-
-    /**
-     * @var string Amazon Secret Key
-     */
-    protected $_secretKey;
-
-    /**
-     * @var string Amazon Access Key
-     */
-    protected $_accessKey;
-
     /**
      * The HTTP query server
      */
@@ -45,42 +25,6 @@ abstract class Zend_Service_Amazon_Sqs extends Zend_Service_Abstract
      * Period after which HTTP request will timeout in seconds
      */
     const HTTP_TIMEOUT = 10;
-
-    /**
-     * Set the keys to use when accessing SQS.
-     *
-     * @param  string $access_key
-     * @param  string $secret_key
-     * @return void
-     */
-    public static function setKeys($access_key, $secret_key)
-    {
-        self::$default_accessKey = $access_key;
-        self::$default_secretKey = $secret_key;
-    }
-
-    /**
-     * Create Amazon Sqs client.
-     *
-     * @param  string $access_key
-     * @param  string $secret_key
-     * @return void
-     */
-    public function __construct($access_key=null, $secret_key=null)
-    {
-        if(!$access_key) {
-            $access_key = self::$default_accessKey;
-        }
-        if(!$secret_key) {
-            $secret_key = self::$default_accessKey;
-        }
-        if(!$access_key || !$secret_key) {
-            require_once 'library/Zend/Service/Amazon/Sqs/Exception.php';
-            throw new Zend_Service_Amazon_Sqs_Exception("AWS keys were not supplied");
-        }
-        $this->_accessKey = $access_key;
-        $this->_secretKey = $secret_key;
-    }
 
     /**
      * Make a request and return the response
