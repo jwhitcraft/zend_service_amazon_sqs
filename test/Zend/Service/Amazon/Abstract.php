@@ -73,12 +73,12 @@ class TestAmamzonAbstract extends Zend_Service_Amazon_Abstract
 {
     public function returnAccessKey()
     {
-        return $this->_accessKey;
+        return $this->accessKey;
     }
 
     public function returnSecretKey()
     {
-        return $this->_secretKey;
+        return $this->secretKey;
     }
 }
 
