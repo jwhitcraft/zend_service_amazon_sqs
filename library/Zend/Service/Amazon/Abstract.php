@@ -56,8 +56,8 @@ abstract class Zend_Service_Amazon_Abstract extends Zend_Service_Abstract
             require_once 'Zend/Service/Amazon/Exception.php';
             throw new Zend_Service_Amazon_Exception("AWS keys were not supplied");
         }
-        $this->_accessKey = $accessKey;
-        $this->_secretKey = $secretKey;
+        $this->accessKey = $accessKey;
+        $this->secretKey = $secretKey;
     }
 
     /**
@@ -77,6 +77,6 @@ abstract class Zend_Service_Amazon_Abstract extends Zend_Service_Abstract
      */
     protected function getSecretKey()
     {
-        return $this->accessKey;
+        return $this->secretKey;
     }
 }
