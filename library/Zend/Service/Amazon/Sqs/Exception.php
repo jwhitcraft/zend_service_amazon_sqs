@@ -15,7 +15,7 @@
  * @category   Zend
  * @package    Zend_Service_Amazon
  * @subpackage Sqs
- * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  * @version    $Id: Exception.php 8064 2008-02-16 10:58:39Z thomas $
  */
@@ -29,9 +29,23 @@ require_once 'Zend/Service/Amazon/Exception.php';
 
 /**
  * @category   Zend
- * @package    Zend_Service
- * @copyright  Copyright (c) 2005-2008 Zend Technologies USA Inc. (http://www.zend.com)
+ * @package    Zend_Service_Amazon
+ * @subpackage Sqs
+ * @copyright  Copyright (c) 2005-2009 Zend Technologies USA Inc. (http://www.zend.com)
  * @license    http://framework.zend.com/license/new-bsd     New BSD License
  */
 class Zend_Service_Amazon_Sqs_Exception extends Zend_Service_Amazon_Exception
-{}
+{
+    private $awsErrorCode = '';
+
+    public function __construct($message, $code, $awsErrorCode = '')
+    {
+        parent::__construct($message, $code);
+        $this->awsErrorCode = $awsErrorCode;
+    }
+
+    public function getErrorCode()
+    {
+        return $this->awsErrorCode;
+    }
+}

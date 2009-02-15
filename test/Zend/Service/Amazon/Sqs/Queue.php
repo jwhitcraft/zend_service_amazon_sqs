@@ -21,9 +21,6 @@ class Queue extends PHPUnit_Framework_TestCase
     protected function setUp()
     {
         parent::setUp();
-
-        $this->Zend_Service_Amazon_Sqs_Queue = new Zend_Service_Amazon_Sqs_Queue('', '');
-
     }
 
     /**
@@ -39,18 +36,14 @@ class Queue extends PHPUnit_Framework_TestCase
         parent::tearDown();
     }
 
-    /**
-     * Tests Zend_Service_Amazon_Sqs_Queue->listQueues()
-     */
-    public function testListQueues()
+    public function testDeleteThrowsExceptionOnInvalidQueue()
     {
-        $return = $this->Zend_Service_Amazon_Sqs_Queue->listQueues();
-
-        $this->assertType('array', $return);
-
-        var_dump($return);
-
+        $class = new Zend_Service_Amazon_Sqs_Queue('test153513513');
+        try {
+            //$class->delete('Z2hlcm1hbi5kZXNrdG9wLmFtYXpvbi5jb20=:AAABFoNJa/AAAAAAAAAANwAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAHA=');
+        } catch (Zend_Service_Amazon_Sqs_Exception $e) {
+            print $e->getMessage();
+        }
     }
-
 }
 
